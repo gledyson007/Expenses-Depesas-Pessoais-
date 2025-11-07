@@ -21,8 +21,10 @@ O **Expenses** é um aplicativo de controle financeiro pessoal que permite aos u
 - ➕ **Adicionar Despesas**: Cadastro fácil de novas transações com título, valor e data
 - 📅 **Seletor de Data**: Interface intuitiva para escolher a data da transação
 - 🗑️ **Excluir Despesas**: Remoção rápida de transações indesejadas
-- 📱 **Interface Responsiva**: Design adaptável para diferentes tamanhos de tela
+- 📱 **Interface Responsiva**: Design adaptável para diferentes tamanhos de tela e orientações
 - 🎨 **Tema Personalizado**: Cores purple e amber com fontes customizadas
+- 🍎 **Componentes Adaptativos**: UI nativa para iOS (Cupertino) e Android (Material Design)
+- 🔄 **Modo Paisagem**: Layout otimizado com toggle entre gráfico e lista
 
 ## 🚀 Demonstração
 
@@ -34,16 +36,20 @@ O **Expenses** é um aplicativo de controle financeiro pessoal que permite aos u
 - Botões flutuantes para adicionar novas despesas
 
 #### ➕ Adicionar Transação
-- Campo para título da despesa
-- Campo para valor em reais (R$)
-- Seletor de data com interface nativa
+- Campo para título da despesa (adaptativo iOS/Android)
+- Campo para valor em reais (R$) com teclado numérico
+- Seletor de data com interface nativa para cada plataforma
+  - **iOS**: CupertinoDatePicker integrado
+  - **Android**: Modal DatePicker do Material Design
 - Validação de dados obrigatórios
+- Botão adaptativo com estilo nativo
 
 #### 📈 Gráfico Interativo
 - Barras proporcionais baseadas no valor total da semana
 - Valores exibidos no topo de cada barra
 - Dias da semana identificados por letras
 - Atualização automática conforme novas transações
+- Toggle entre gráfico e lista no modo paisagem
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -59,19 +65,24 @@ O **Expenses** é um aplicativo de controle financeiro pessoal que permite aos u
 - **StatefulWidget** - Gerenciamento de estado reativo
 - **Componentização** - Código modular e reutilizável
 - **Clean Architecture** - Separação clara entre UI, componentes e modelos
+- **Adaptive Widgets** - Componentes que se adaptam à plataforma (iOS/Android)
+- **Platform Detection** - Detecção automática da plataforma para UI nativa
 
 ## 📂 Estrutura do Projeto
 
 ```
 lib/
-├── main.dart                    # Arquivo principal do app
+├── main.dart                        # Arquivo principal do app
 ├── models/
-│   └── transaction.dart         # Modelo da transação
+│   └── transaction.dart             # Modelo da transação
 └── components/
-    ├── chart.dart              # Componente do gráfico semanal
-    ├── chart_bar.dart          # Componente das barras do gráfico
-    ├── transaction_form.dart    # Formulário de nova transação
-    └── transaction_list.dart    # Lista de transações
+    ├── chart.dart                   # Componente do gráfico semanal
+    ├── chart_bar.dart               # Componente das barras do gráfico
+    ├── transaction_form.dart        # Formulário de nova transação
+    ├── transaction_list.dart        # Lista de transações
+    ├── adaptative_date_piker.dart   # Seletor de data adaptativo
+    ├── adaptative_text_field.dart   # Campo de texto adaptativo
+    └── components_button.dart       # Botão adaptativo
 ```
 
 ## 🚀 Como Executar
@@ -130,10 +141,16 @@ flutter build web --release
 - **Quicksand**: Fonte secundária para textos gerais
 
 ### Componentes UI
-- **Material Design 2**: Base do design system
+- **Material Design 2**: Base do design system para Android
+- **Cupertino Design**: Design nativo para iOS
+- **Adaptive Components**: Componentes que mudam automaticamente baseado na plataforma
+  - `AdaptiveButton`: CupertinoButton (iOS) / ElevatedButton (Android)
+  - `AdaptiveTextField`: CupertinoTextField (iOS) / TextField (Android)
+  - `AdaptiveDatePicker`: CupertinoDatePicker (iOS) / showDatePicker (Android)
 - **Cards Elevados**: Para agrupamento visual
 - **Floating Action Button**: Ação primária de adicionar
 - **Modal Bottom Sheet**: Para formulários
+- **LayoutBuilder**: Para detecção de orientação e tamanho de tela
 
 ## 📱 Compatibilidade
 
@@ -146,12 +163,14 @@ flutter build web --release
 
 - [ ] 📊 Gráficos mensais e anuais
 - [ ] 🏷️ Categorias de despesas
-- [ ] 💾 Persistência local de dados
-- [ ] 📤 Exportação de relatórios
+- [ ] 💾 Persistência local de dados (SQLite/Hive)
+- [ ] 📤 Exportação de relatórios (PDF/Excel)
 - [ ] 🔔 Lembretes e notificações
 - [ ] 💱 Suporte a múltiplas moedas
-- [ ] 🌙 Modo escuro
+- [ ] 🌙 Modo escuro adaptativo
 - [ ] 🔐 Autenticação e backup na nuvem
+- [ ] 📈 Análise de tendências de gastos
+- [ ] 🎯 Metas de economia
 
 ## 📈 Status do Projeto
 
@@ -166,6 +185,9 @@ Desenvolvido durante o curso de Flutter, focando em:
 - Componentização e reutilização de código
 - Interface responsiva e acessível
 - Boas práticas de desenvolvimento Flutter
+- Componentes adaptativos multiplataforma (iOS/Android)
+- Detecção de plataforma e orientação de tela
+- Layouts responsivos com MediaQuery e LayoutBuilder
 
 ## 📄 Licença
 
